@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { HeadingProjects, TechnologiesUsed, Summary, Paragraph, HeroImage, Carousel } from "../components";
-import Hero from "../assets/images/hero/webcore-devcenter.jpg";
-import Hero2 from "../assets/images/hero/webcore-partner.jpg";
-import Hero3 from "../assets/images/hero/webcore-support.jpg";
-import { sizes } from "../constants";
+import { HeadingProjects, TechnologiesUsed, Summary, Paragraph, Carousel } from "../../components";
+import Hero from "../../assets/images/hero/microsoft-store.jpg";
+import Hero2 from "../../assets/images/hero/microsoft-store-2.jpg";
+import Hero3 from "../../assets/images/hero/microsoft-store-3.jpg";
+import { sizes } from "../../constants";
 
 const techs = [
     {
@@ -16,31 +16,23 @@ const techs = [
         usage: "primary",
     },
     {
-        name: "jQuery",
+        name: "React",
         usage: "primary",
-    },
-    {
-        name: "Handlebars",
-        usage: "secondary",
     },
     {
         name: "JavaScript",
         usage: "secondary",
     },
     {
-        name: "Grunt",
+        name: "CSS",
         usage: "secondary",
     },
     {
-        name: "JSON",
-        usage: "secondary",
-    },
-    {
-        name: "Git",
+        name: "CSHTML",
         usage: "tertiary",
     },
     {
-        name: "Gulp",
+        name: "Git",
         usage: "tertiary",
     },
     {
@@ -48,7 +40,7 @@ const techs = [
         usage: "tertiary",
     },
     {
-        name: "Webpack",
+        name: "Visual Studio",
         usage: "tertiary",
     },
 ]
@@ -56,39 +48,37 @@ const techs = [
 const heroesList = [
     {
         image: Hero,
-        title: "Microsoft Developer Center",
+        title: "Microsoft Store Game PDP",
     },
     {
         image: Hero2,
-        title: "Microsoft Partner Center",
+        title: "Microsoft Store Device PDP",
     },
     {
         image: Hero3,
-        title: "Microsoft Support",
+        title: "Microsoft Store Movie PDP",
     },
 ]
 
-class WebcoreBase extends React.Component {
+class MSStoreBase extends React.Component {
     render() {
         return (
             <div className={this.props.className}>
-                <HeadingProjectsLayout>Microsoft web style guide</HeadingProjectsLayout>
-                <CarouselLayout heroes={heroesList} />
+                <HeadingProjectsLayout>Microsoft Store</HeadingProjectsLayout>
+                <CarouselLayout heroes={heroesList} {...this.props} />
                 <TechnologiesUsedLayout techs={techs} />
                 <SummaryLayout>
                     <Paragraph fsize={"16px"}>
-                        I owned a style and component library for Windows-related websites. I built and maintained components based on the needs of the design team, and interfaced with the engineering teams to help them build out their sites using my components.
+                        I implemented the redesign of the buy box of the Microsoft Store product detail page (PDP). This UI is the most prominent part of the page, and needed to be flexible enough to accommodate many different combinations of content&nbsp;&mdash; different product types, with or without images in different locations, promotions, different buying options, and many other possibilities.
                     </Paragraph>
-                    <Paragraph fsize={"16px"}>
-                        As the owner of the project, I also was responsible for deployment, versioning, writing and messaging out patch notes, and maintaining the documentation site.
-                    </Paragraph>
+                    <Paragraph fsize={"16px"}>Accomplishing that involved working closely with both the designers and the back-end engineers, prototyping creative solutions, and a lot of iterating.</Paragraph>
                 </SummaryLayout>
             </div>
         );
     }
 }
 
-const Webcore = styled(WebcoreBase)`
+const MSStore = styled(MSStoreBase)`
     display: grid;
     min-height: 100%;
     grid-template-columns: 1fr;
@@ -133,4 +123,4 @@ const SummaryLayout = styled(Summary)`
 }
 `;
 
-export default Webcore;
+export default MSStore;

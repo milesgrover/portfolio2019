@@ -1,29 +1,82 @@
 import React from "react";
 import styled from "styled-components";
+import { Redirect } from "react-router-dom";
 import { CloseButton } from ".";
 import { colors, sizes } from "../constants";
 import NoiseBG from "../assets/images/bg-capsule-bw.png";
+import Carousel from "./projects/Carousel";
 
 class ModalOverlayBase extends React.Component {
-    render() {
-        const Project = this.props.project;
-        if (Project) {
-            return (
-                <div className={this.props.className}>
-                    <ModalContent>
-                        <CloseButton to={this.props.category} />
-                        <Project />
-                    </ModalContent>
-                </div>
-            );
-        } else {
-            return null;
+    constructor(props) {
+        super(props);
+        this.state = {
+            dismiss: false,
+            fullImage: null,
+            carouselStartIndex: 0,
         }
     }
-    onCloseModal = () => {
-        if (typeof this.props.onClose === "function") {
-            this.props.onClose();
+    render() {
+        const Project = this.props.project;
+        if (this.state.dismiss) {
+            return <Redirect to={this.props.category} />;
+        } else {
+            if (Project) {
+                return (
+                    <div className={this.props.className} onClick={this.handleLightDismiss}>
+                        <ModalContent onClick={this.noDismiss} fillContent={!!this.state.fullImage}>
+                            <CloseButton to={this.props.category} />
+                            {this.state.fullImage ? 
+                                <Carousel
+                                    heroClick={this.closeFullImage}
+                                    heroes={this.state.fullImage}
+                                    carouselStartIndex={this.state.carouselStartIndex}
+                                    fillContent
+                                />
+                            :
+                                <Project
+                                    heroClick={this.heroClick}
+                                    carouselStartIndex={this.state.carouselStartIndex}
+                                />
+                            }
+                        </ModalContent>
+                    </div>
+                );
+            } else {
+                return null;
+            }
         }
+    }
+
+    noDismiss = (e) => {
+        e.stopPropagation();
+    }
+
+    handleLightDismiss = () => {
+        this.setState({
+            dismiss: true,
+        });
+    }
+
+    heroClick = (heroes, current) => {
+        const newHeroes = heroes.map(hero => {
+            return Object.assign({}, hero, {
+                bgSize: "contain",
+                align:"center",
+                bgColor: "#ccc"
+            });
+        });
+
+        this.setState({
+            fullImage: newHeroes,
+            carouselStartIndex: current
+        });
+    }
+
+    closeFullImage = (heroes, current) => {
+        this.setState({
+            fullImage: null,
+            carouselStartIndex: current,
+        });
     }
 }
 
@@ -49,7 +102,7 @@ const ModalContent = styled.div`
     width: 100%;
     overflow: auto;
     max-width: 1400px;
-    padding: 10px 15px 15px;
+    padding: ${props => props.fillContent ? `0` : `10px 15px 15px`};
     background: ${colors.white};
     box-shadow: -12px 12px 0 ${colors.black};
     position: relative;

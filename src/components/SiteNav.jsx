@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { colors, sizes } from "../constants";
-import NoiseBG from "../assets/images/bg-capsule-bw.png";
+import { colors, fonts, sizes } from "../constants";
 
 const navLinks = [
     {
@@ -53,7 +52,7 @@ const SiteNav = styled(SiteNavBase)`
         margin: 15px 0 30px 0;
         padding: 0;
         display: flex;
-        font-family: Catamaran, sans-serif;
+        font-family: ${fonts.display};
         font-weight: 800;
         text-transform: uppercase;
         @media (min-width: ${sizes.breakpoints.md}) {
@@ -67,7 +66,7 @@ const SiteNavItem = styled.li`
         text-decoration: none;
         color: inherit;
         display: block;
-        padding: 5px 10px 2px;
+        padding: 5px 10px;
     }
     font-size: 30px;
     line-height: 1;
@@ -90,7 +89,7 @@ const SiteNavItem = styled.li`
         margin-right: 0;
     }
     @media (min-width: ${sizes.breakpoints.sm}) {
-        font-size: 40px;
+        font-size: 36px;
     }
 `;
 

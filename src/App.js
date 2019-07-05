@@ -9,7 +9,9 @@ function App() {
       <Route exact path="/tech" component={TechPage} />
       <Route exact path="/tech/:id" component={TechPage} />
       <Route exact path="/design" component={DesignPage} />
+      <Route exact path="/design/:id" component={DesignPage} />
       <Route exact path="/art" component={ArtPage} />
+      <Route exact path="/art/:id" component={ArtPage} />
       <Route exact path="/" component={HomePage} />
     </Router>
   );

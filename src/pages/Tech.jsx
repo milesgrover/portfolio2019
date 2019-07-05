@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { Page, Heading1, Paragraph, ProjectsList, TechTag } from "../components";
 import { MSStore, PrototypingReact, Webcore, WindowsPhone } from "../projects";
+import { fonts } from "../constants";
 
 const projects = [
     {
@@ -30,14 +31,6 @@ const projects = [
 const category = "/tech/";
 
 class TechPage extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            showProject: null,
-        }
-    }
-
     getProjectFromUrl = () => {
         const url = this.props.match.params.id;
         const getProject = projects.find(p => p.url === url);
@@ -56,7 +49,7 @@ class TechPage extends React.Component {
                 <Heading1>tech projects</Heading1>
                 
                 <Paragraph>
-                    This is a small sample of technical projects I've worked on in my career as a front-end engineer.
+                    I love building UI as a front-end engineer. Here are a few projects I've worked on recently.
                 </Paragraph>
                 <ProjectsListLayout
                     items={projects}
@@ -82,7 +75,7 @@ const TopTechs = styled.div`
     span {
         font-size: 16px;
         margin-right: 8px;
-        font-family: Catamaran, sans-serif;
+        font-family: ${fonts.display};
         text-transform: uppercase;
         font-weight: 800;
     }

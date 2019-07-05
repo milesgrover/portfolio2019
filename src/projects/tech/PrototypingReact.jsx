@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { HeadingProjects, TechnologiesUsed, Summary, Paragraph, HeroImage } from "../components";
-import Hero from "../assets/images/hero/windows-prototypes.jpg";
-import { sizes } from "../constants";
+import { HeadingProjects, TechnologiesUsed, Summary, Paragraph, Carousel } from "../../components";
+import Hero from "../../assets/images/hero/windows-prototypes.jpg";
+import { sizes } from "../../constants";
 
 const techs = [
     {
@@ -59,6 +59,14 @@ const techs = [
     },
 ]
 
+const heroesList = [
+    {
+        image: Hero,
+        title: "Windows Prototypes: Top Secret",
+        hideTitle: true,
+    },
+]
+
 class PrototypingReactBase extends React.Component {
     render() {
         return (
@@ -69,7 +77,7 @@ class PrototypingReactBase extends React.Component {
                     <Paragraph>As one of the primary contributors to this project, I create prototypes for future versions of Windows, building components using primarily React, Redux, and JSS (CSS in JavaScript).</Paragraph>
                     <Paragraph>Unfortunately, the specifics are all confidential. I can say that I have been one of the primary architects of the project as well as a mentor for more junior members of my team.</Paragraph>
                 </SummaryLayout>
-                <HeroImageLayout title="Windows Prototypes: Top Secret" image={Hero} hideTitle={true} />
+                <CarouselLayout heroes={heroesList} {...this.props} hideHelperText />
             </div>
         );
     }
@@ -112,7 +120,7 @@ const SummaryLayout = styled(Summary)`
 }
 `;
 
-const HeroImageLayout = styled(HeroImage)`
+const CarouselLayout = styled(Carousel)`
     min-height: 300px;
     @media (min-width: ${sizes.breakpoints.lg}) {
         grid-column: 1 / 3;

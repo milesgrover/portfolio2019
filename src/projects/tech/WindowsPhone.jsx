@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { HeadingProjects, TechnologiesUsed, Summary, Paragraph, Carousel } from "../components";
-import Cortana from "../assets/images/hero/winphone-cortana.jpg";
-import Cortana2 from "../assets/images/hero/winphone-cortana2.jpg";
-import Messaging from "../assets/images/hero/winphone-messaging.jpg";
-import SIPEn from "../assets/images/hero/winphone-sip-en.jpg";
-import SIPRu from "../assets/images/hero/winphone-sip-ru.jpg";
-import SIPJp from "../assets/images/hero/winphone-sip-jp.jpg";
-import SIPCh from "../assets/images/hero/winphone-sip-ch.jpg";
-import { sizes } from "../constants";
+import { HeadingProjects, TechnologiesUsed, Summary, Paragraph, Carousel } from "../../components";
+import Cortana from "../../assets/images/hero/winphone-cortana.jpg";
+import Cortana2 from "../../assets/images/hero/winphone-cortana2.jpg";
+import Messaging from "../../assets/images/hero/winphone-messaging.jpg";
+import SIPEn from "../../assets/images/hero/winphone-sip-en.jpg";
+import SIPRu from "../../assets/images/hero/winphone-sip-ru.jpg";
+import SIPJp from "../../assets/images/hero/winphone-sip-jp.jpg";
+import SIPCh from "../../assets/images/hero/winphone-sip-ch.jpg";
+import { sizes } from "../../constants";
 
 const techs = [
     {
@@ -73,7 +73,7 @@ class WindowsPhoneBase extends React.Component {
                         Later in my time on this project, I was promoted to be one of the managers of a team of 25 people polishing the UI. When the Windows and Windows Phone organizations merged, the team moved on to polishing UI for Windows 8 and then Windows 10.
                     </Paragraph>
                 </SummaryLayout>
-                <CarouselLayout heroes={heroesList} />
+                <CarouselLayout heroes={heroesList} {...this.props} />
             </div>
         );
     }
@@ -117,9 +117,11 @@ const CarouselLayout = styled(Carousel)`
     max-width: 480px;
     max-height: 800px;
     justify-self: center;
-    padding-top: 60%;
     > div {
-        top: 0;
+        padding-top: 60%;
+        > div {
+            top: 0;
+        }
     }
     @media (min-width: ${sizes.breakpoints.lg}) {
         height: 800px;

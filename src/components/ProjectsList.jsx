@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PinkCapsBG from "../assets/images/bg-capsule-pink.png";
 import BlueCapsBG from "../assets/images/bg-capsule-blue.png";
-import { colors } from "../constants";
+import { colors, fonts } from "../constants";
 
 class ProjectsListBase extends React.Component {
     render() {
@@ -35,7 +35,7 @@ const ProjectsList = styled(ProjectsListBase)`
     margin: 0;
     padding: 0;
     list-style: none;
-    font-family: Catamaran, sans-serif;
+    font-family: ${fonts.display};
     font-weight: 800;
     font-size: 32px;
     li {

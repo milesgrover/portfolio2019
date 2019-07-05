@@ -5,7 +5,9 @@ import { SubHeading } from "./SubHeading";
 const SummaryBase = (props) => {
     return (
         <div className={props.className}>
-            <SubHeading>Summary</SubHeading>
+            {!props.hideHeading && 
+                <SubHeading>Summary</SubHeading>
+            }
             {props.children}
         </div>
     );

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "../../constants";
+import { colors, fonts } from "../../constants";
 
 export const HeadingProjects = styled.h2`
-    font-family: Catamaran, sans-serif;
+    font-family: ${fonts.display};
     font-weight: 900;
     font-size: 35px;
     line-height: 1.05;

@@ -26,6 +26,7 @@ const CloseButton = styled(CloseButtonBase)`
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
     img {
         width: 16px;
         height: 16px;

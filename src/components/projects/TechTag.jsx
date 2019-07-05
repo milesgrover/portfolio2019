@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../constants";
+import { colors, fonts } from "../../constants";
 
 const colorMap = {
     primary: colors.pink,
@@ -8,7 +8,7 @@ const colorMap = {
 }
 
 export const TechTag = styled.div`
-    font-family: Catamaran, sans-serif;
+    font-family: ${fonts.display};
     font-weight: 700;
     font-size: ${props => props.mini ? `16px` : `24px`};
     line-height: 1;
